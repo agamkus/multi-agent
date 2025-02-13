@@ -84,20 +84,20 @@ def run_full_turn(agent, messages):
         messages.append(message)
 
         if message.content: # print agent response
-        print(f"{current_agent.name}:", message.content)
+            print(f"{current_agent.name}:", message.content)
 
         if not message.tool_calls: # if finished handling tool calls, break
-        break
+            break
 
         # === 2. handle tool calls ===
         for tool_call in message.tool_calls:
-        result = execute_tool_call(tool_call, tools, current_agent.name)
+            result = execute_tool_call(tool_call, tools, current_agent.name)
 
-        if type(result) is Agent: # if agent transfer, update current agent
-        current_agent = result
-        result = (
-        f"Transferred to {current_agent.name}. Adopt persona immediately."
-            )
+            if type(result) is Agent: # if agent transfer, update current agent
+                current_agent = result
+                result = (
+                    f"Transferred to {current_agent.name}. Adopt persona immediately."
+                )
 
         result_message = {
         "role": "tool",

@@ -1,13 +1,14 @@
+import os
 from openai import OpenAI
 import inspect
 from pydantic import BaseModel
 from typing import Optional
 import json
 
-'''
-client = OpenAI(api_key="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")
-'''
-client = OpenAI()
+
+client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+
+#client = OpenAI()
 
 class Agent(BaseModel):
     name: str = "Agent"

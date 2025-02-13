@@ -5,7 +5,7 @@ from typing import Optional
 import json
 
 
-client = OpenAI(api_key="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")
+client = OpenAI(api_key="""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""")
 
 class Agent(BaseModel):
     name: str = "Agent"
